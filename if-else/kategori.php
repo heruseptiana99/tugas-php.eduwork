@@ -52,7 +52,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama" placeholder="nama lengkap">
+                                <input type="text" class="form-control" id="nama" name="nama" placeholder="nama lengkap">
                             </div>
                             <div class="mb-3">
                                 <label for="tinggi" class="form-label">Tinggi Badan</label>
@@ -68,12 +68,20 @@
                     </div>
                 </div>
                 <?php 
-                    var_dump($_GET);
+                // $nama = $_GET("nama");
+                // $tinggi = $_GET("tinggi_badan");
+                // $berat = $_GET("berat_badan");
+                // $imt = $berat/($tinggi/100)*2;
+                // echo $imt; 
+                echo $_GET("nama");
+
+                    
                 ?>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            
+                            <h4>HASIL BMI</h4>
+                            <p>Halo, nama. Nilai BMI anda adalah ….., anda termasuk (kurus, sedang, gemuk)</p>
                         </div>
                     </div>
                 </div>
