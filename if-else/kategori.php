@@ -68,12 +68,11 @@
                     </div>
                 </div>
                 <?php 
-                // $nama = $_GET("nama");
-                // $tinggi = $_GET("tinggi_badan");
-                // $berat = $_GET("berat_badan");
-                // $imt = $berat/($tinggi/100)*2;
-                // echo $imt; 
-                echo $_GET("nama");
+                $nama = $_GET["nama"];
+                $tinggi = $_GET["tinggi_badan"];
+                $berat = $_GET["berat_badan"];
+                $imt = $berat/($tinggi/100)*2;
+                echo $imt; 
 
                     
                 ?>
