@@ -63,22 +63,39 @@
                                 <input type="text" class="form-control" id="berat" name="berat_badan" placeholder="berat badan">
                             </div>
                             <button type="submit" class="btn btn-primary">Cek BMI</button>
+                            <a href="http://localhost/tugas-php.eduwork/if-else/kategori.php" class="btn btn-success">Refresh</a>
                             </form>
                         </div>
                     </div>
                 </div>
-                <?php 
-                    $nama = $_GET["nama"];
-                    $tinggi = $_GET["tinggi_badan"];
-                    $berat = $_GET["berat_badan"];
-                    $imt = $berat/($tinggi/100)*2;
-                    echo $imt;                    
+                <?php
+                    if($_GET){
+                        $nama = $_GET["nama"];
+                        $tinggi = $_GET["tinggi_badan"];
+                        $berat = $_GET["berat_badan"];
+                        $imt = $berat/(($tinggi/100)*2);
+                        if($imt<18.5){
+                            $hasil = "Kurus";
+                        }elseif($imt>=18.5 AND $imt<=25.0){
+                            $hasil = "Sedang";
+                        }else{
+                            $hasil = "Gemuk";
+                        }                    
+                    } 
                 ?>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
                             <h4>HASIL BMI</h4>
-                            <p>Halo, nama. Nilai BMI anda adalah ….., anda termasuk (kurus, sedang, gemuk)</p>
+                            <?php 
+                                if($_GET){
+                                    ?>
+                                    <p>Halo, <?= $nama ?>. Nilai BMI anda adalah <?= $nama ?>, anda termasuk <?= $hasil ?></p>
+                            <?php
+                                }else{
+                                    echo "Nilai akan tampil...";
+                                }
+                            ?>
                         </div>
                     </div>
                 </div>

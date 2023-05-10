@@ -17,7 +17,22 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-                <h3 class="mt-4 mb-5 text-center">DATA ANGGOTA PERPUSTAKAAN</h3>
+                <h3 class="mt-4 text-center">DATA ANGGOTA PERPUSTAKAAN</h3>
+                <?php 
+                  if($_GET){
+                    if ($_GET['berhasil']==1) {
+                     
+                    
+                ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  Berhasil menambahkan data baru anggota! 
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php
+                    }
+                  }
+                ?>
+                <a href="tambah.php" class="btn btn-primary mt-3 mb-3">Tambah Anggota</a>
                 <table class="table table-striped">
                   <thead>
                       <tr>
@@ -43,7 +58,7 @@
                           <td><?= $anggota['sex'] ?></td>
                           <td><?= $anggota['telp'] ?></td>
                           <td><?= $anggota['email'] ?></td>
-                          <td><?= $anggota['alamat'] ?></td>
+                          <td width="250px"><?= $anggota['alamat'] ?></td>
                           <td>
                             <a href="" class="btn btn-success">Ubah</a>
                             <a href="" class="btn btn-danger">Hapus</a>
