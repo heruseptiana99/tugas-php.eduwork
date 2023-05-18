@@ -10,6 +10,19 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
   </head>
+  <?php
+  include ('koneksi.php');
+  $id_anggota = $_GET['id_anggota'];
+
+  $data_anggota = mysqli_query($conn, "SELECT id_anggota, nama, sex, telp, alamat, email FROM anggota where id_anggota='$id_anggota'");
+  while ($anggota = mysqli_fetch_array($data_anggota)) {
+    $nama = $anggota['nama'];
+    $sex = $anggota['sex'];
+    $telp = $anggota['telp'];
+    $email = $anggota['email'];
+    $alamat = $anggota['alamat'];
+  }
+  ?>
   <body>
     <!-- As a link -->
     <nav class="navbar bg-body-tertiary">
@@ -24,37 +37,37 @@
                 <a href="index.php" class="btn btn-primary mb-3"> << kembali</a>
                 <div class="card">
                     <div class="card-body">
-                        <form action="proses.php" method="POST" id="form-pelanggan">
-                        <h3 class="mb-3">Tambah Anggota</h3>
+                        <form action="proses_edit.php?id_anggota=<?=$id_anggota;?>" method="POST" id="form-pelanggan">
+                        <h3 class="mb-3">Ubah Anggota</h3>
                         <div class="mb-3">
                             <label for="nama" class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
+                            <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" value="<?= $nama; ?>">
                             <small id="text-error-name"></small>
                         </div>
                         <div class="mb-3">
                             <label for="nama" class="form-label">Jenis Kelamin</label>
                             <select name="sex" class="form-select" aria-label="Default select example">
-                                <option value="P">Perempuan</option>
-                                <option value="L">Laki-laki</option>
+                                <option value="P" <?php if($sex=="P"){ echo"selected";} ?>>Perempuan</option>
+                                <option value="L" <?php if($sex=="L"){ echo"selected";} ?>>Laki-laki</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="telp" class="form-label">Telepon</label>
-                            <input type="number" class="form-control" name="telp" id="telp" placeholder="Telepon">
+                            <input type="number" class="form-control" name="telp" id="telp" placeholder="Telepon" value="<?= $telp ?>">
                             <small id="text-error-telp"></small>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Email@gmail.com">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Email@gmail.com" value="<?= $email ?>">
                             <small id="text-error-email"></small>
                         </div>
                         <div class="mb-3">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <textarea name="alamat" class="form-control" id="alamat" rows="3"></textarea>
+                            <textarea name="alamat" class="form-control" id="alamat" rows="3"><?= $alamat ?></textarea>
                             <small id="text-error-alamat"></small>
                         </div>
                         <div class="mb-3">
-                            <button id="my-button" type="button" class="btn btn-primary">Tambah</button>
+                            <button id="my-button" type="button" class="btn btn-primary">Ubah</button>
                         </div>
                         </form>
                     </div>
